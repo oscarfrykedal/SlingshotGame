@@ -27,6 +27,18 @@ public class ScoreScript : MonoBehaviour
             Debug.Log("no more enemies");
             StartCoroutine(LastScene());
         }
+        score.text = " " + scoreValue;
+        if (scoreValue == -1)
+        {
+            Debug.Log("no more enemies");
+            StartCoroutine(LastScene());
+        }
+        score.text = " " + scoreValue;
+        if (scoreValue == -2)
+        {
+            Debug.Log("no more enemies");
+            StartCoroutine(LastScene());
+        }
     }
 
     IEnumerator LastScene()

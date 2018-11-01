@@ -14,38 +14,45 @@ public class ExplodingCharacter : MonoBehaviour
         if (colInfo.collider.tag == "Enemy")
         {
             Debug.Log("you hit an enemy");
-            Explode();
+            StartCoroutine(Explode());
 
             
-            //StartCoroutine(NotActive());
+            
 
         }
 
 
     }
-    void Explode()
+    IEnumerator Explode()
     {
         explosion.gameObject.SetActive(true);
-        Instantiate(explosion, transform.position, Quaternion.identity);
-        explosion.gameObject.SetActive(false);
-        Destroy(gameObject);
+        GameObject obj = Instantiate(explosion, transform.position, Quaternion.identity);
+        //Destroy(gameObject);
+
+        yield return new WaitForSeconds(2f);
+
+          obj.gameObject.SetActive(false);
+        
+        
     }
 
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
+   
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
 
-        if (other.CompareTag("Enemy"))
-        {
-            Debug.Log("träff " + other);
+       // if (other.CompareTag("Enemy"))
+       // {
+        //    Debug.Log("träff " + other);
             
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            //explosion.gameObject.SetActive(false);
+       //     GameObject gm = Instantiate(explosion, transform.position, Quaternion.identity);
+        //    Debug.LogError("exp: " + gm.name);
+        //    gm.gameObject.SetActive(false);
 
 
 
 
-        }
-    }
+       // }
+   // }
 
 }
